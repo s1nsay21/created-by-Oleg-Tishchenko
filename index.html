@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calculator</title>
+</head>
+<body>
+	<style>
+		.container {
+			margin: 100px auto 0px auto;
+    		width: 250px;
+		}
+		.buttons-block {
+			margin-bottom: 14px;
+		}
+		button {
+    		box-shadow: unset;
+    		background-color: #ff9f09;
+		    color: #fff;
+		    border: none;
+		    cursor: pointer;
+		    font-size: 1.3em;
+		    min-width: 46px;
+		    min-height: 40px;
+		    border-radius: 21px;
+		}
+		button:hover {
+			background-color: #ffaf32;
+		}
+		input {
+			border: none;
+			background-color: #2d3034;
+    		box-shadow: unset;
+    		border-radius: 8px;
+    		padding: 6px 12px;
+			color: #fff;
+    		font-size: 2.75em;
+    		font-weight: 300;
+    		max-width: 225px;
+		}
+
+		#sum {
+			margin-top: 7px;
+		    font-size: 2.75em;
+		    font-weight: 300;
+		    text-align: right;
+		    padding-right: 12px;
+		}
+	</style>
+	<div class="container">
+		<div class="buttons-block">
+			<button class="vx">√x</button>
+			<button class="log">ln</button>
+			<button class="sin">sin</button>
+			<button class="cos">cos</button>
+			<button class="tg">tan</button>
+		</div>
+		<div id="sum"></div>
+		<div>
+			<input id="input" type="number" value="0">
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function(){ 
+			const input = document.querySelector('#input');
+    		const sumElement = document.querySelector('#sum');
+
+    		const vxButton = document.querySelector('.vx');
+    		const logButton = document.querySelector('.log');
+    		const sinButton = document.querySelector('.sin');
+    		const cosButton = document.querySelector('.cos');
+    		const tgButton = document.querySelector('.tg');
+
+    		vxButton.addEventListener("click", (event) => {
+    			const value = input.value;
+    			if(value > 0)
+    			{
+    				const result = vxFunc(value);
+                	sumElement.textContent = '= ' + result;
+    			}
+            });
+            logButton.addEventListener("click", (event) => {
+            	const value = input.value;
+    			if(value > 0)
+    			{
+	                const result = logFunc(value);
+	                sumElement.textContent = '= ' + result;
+	            }
+            });
+            sinButton.addEventListener("click", (event) => {
+            	const value = input.value;
+    			if(value > 0)
+    			{
+	                const result = sinFunc(value);
+	                sumElement.textContent = '= ' + result;
+	            }
+            });
+            cosButton.addEventListener("click", (event) => {
+            	const value = input.value;
+    			if(value > 0)
+    			{
+	                const result = cosFunc(value);
+	                sumElement.textContent = '= ' + result;
+	            }
+            });
+            tgButton.addEventListener("click", (event) => {
+            	const value = input.value;
+    			if(value > 0)
+    			{
+	                const result = tgFunc(value);
+	                sumElement.textContent = '= ' + result;
+	            }
+            });
+
+            function vxFunc(value) {
+            	if (value <= 0) return 0;
+
+    			const resultSum = Math.sqrt(value);
+    			return resultSum.toFixed(2);
+            }
+            function logFunc(value) {
+            	if (value <= 0) return 0;
+
+    			const resultSum = Math.log(value);
+    			return resultSum.toFixed(2);
+            }
+            function sinFunc(value) {
+            	if (value <= 0) return 0;
+
+    			const resultSum = Math.sin(value);
+    			return resultSum.toFixed(2);
+            }
+            function cosFunc(value) {
+            	if (value <= 0) return 0;
+
+            	const resultSum = Math.cos(value);
+    			return resultSum.toFixed(2);
+            }
+            function tgFunc(value) {
+            	if (value <= 0) return 0;
+
+            	const resultSum = Math.tan(value);
+    			return resultSum.toFixed(2);
+            }
+		}, false);
+	</script>
+</body>
+</html>
